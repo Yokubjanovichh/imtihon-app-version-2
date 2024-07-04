@@ -1,0 +1,58 @@
+.rigister {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rigister h1 {
+  text-align: center;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+.rigister label {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.rigister label p {
+  max-width: 400px;
+  min-width: 350px;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: sans-serif;
+}
+.rigister label input,
+.rigister label select {
+  max-width: 400px;
+  min-width: 350px;
+  padding: 10px 5px;
+  font-size: 16px;
+  font-weight: 300;
+}
+.rigister label input option,
+.rigister label select option {
+  font-size: 16px;
+  font-weight: 300;
+}
+.rigister button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 300;
+  font-family: sans-serif;
+}
+
+@media screen and (min-width: 600px) {
+  .rigister label input,
+  .rigister label select,
+  .rigister label p {
+    width: 400px;
+  }
+}

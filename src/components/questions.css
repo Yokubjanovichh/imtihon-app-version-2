@@ -1,0 +1,71 @@
+.questions {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  align-items: center;
+}
+.questions h1 {
+  width: 100%;
+  text-align: center;
+  font-family: sans-serif;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.15);
+  padding: 10px 0px;
+  font-size: 45px;
+}
+.questions label {
+  width: 350px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.questions label h2 {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.questions label p {
+  max-width: 100%;
+  font-size: 25px;
+  font-weight: 300;
+  font-family: sans-serif;
+  text-wrap: wrap;
+  text-align: justify;
+}
+.questions label textarea {
+  max-width: 500px;
+  min-width: 350px;
+  max-height: 300px;
+  min-height: 200px;
+  padding: 10px 5px;
+  font-size: 18px;
+}
+.questions button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 300;
+  font-family: sans-serif;
+}
+
+@media screen and (min-width: 600px) {
+  .questions label {
+    width: 500px;
+  }
+  .questions label p {
+    width: 500px;
+    text-align: justify;
+  }
+  .questions label textarea {
+    width: 500px;
+  }
+}
