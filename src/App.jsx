@@ -101,6 +101,7 @@ export default function App() {
       .catch((error) => {
         alert("Xatolik yuz berdi❌");
         console.error("Xatolik yuz berdi:", error);
+        setDisabled(false);
       });
   };
 
