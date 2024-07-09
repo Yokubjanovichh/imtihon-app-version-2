@@ -48,7 +48,7 @@ export default function Auth() {
             <option value="Dushanba, Chorshanba, Juma">
               Dushanba, Chorshanba, Juma
             </option>
-            <option value="Sheshanba, Payshanba, Shanba">
+            <option value="Seshanba, Payshanba, Shanba">
               Sheshanba, Payshanba, Shanba
             </option>
           </select>
