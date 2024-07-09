@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./questions.css";
 
 const questionsList = [
@@ -35,6 +35,57 @@ const questionsList = [
 ];
 
 export default function Question() {
+  const [answers, setAnswers] = useState(Array(questionsList.length).fill(""));
+  const [disabled, setDisabled] = useState(false);
+
+  const handleSend = (e) => {
+    e.preventDefault();
+    setDisabled(true);
+
+    const userData = JSON.parse(localStorage.getItem("userData"));
+
+    const filledAnswers = answers.map((answer) =>
+      answer.trim() === "" ? "-" : answer
+    );
+
+    const requestBody = {
+      chat_id: YOUR_CHAT_ID,
+      text: `
+      \nIsm: ${userData.name}
+      \nVaqti: ${userData.courseTime}
+      \nKuni: ${userData.courseDay}
+      \nTelefon-raqami: ${userData.phoneNumber} \n
+------------------------------------------
+      \nSavollar: \n${filledAnswers
+        .map((answer, index) => `Savol ${index + 1}: ${answer}`)
+        .join("\n")}`,
+    };
+
+    fetch(`https://api.telegram.org/bot${YOUR_BOT_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(requestBody),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Xatolik yuz berdi");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        alert("Javoblarigiz muvafiqiyatlik yuborildi✅");
+        setDisabled(false);
+        setAnswers(Array(questionsList.length).fill(""));
+      })
+      .catch((error) => {
+        alert("Xatolik yuz berdi❌");
+        console.error("Xatolik yuz berdi:", error);
+        setDisabled(false);
+      });
+  };
+
   return (
     <form>
       <div className="questions">

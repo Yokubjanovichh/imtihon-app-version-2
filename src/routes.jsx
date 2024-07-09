@@ -13,18 +13,16 @@ const ProtectedRoute = ({ children }) => {
 export const Router = () => {
   return (
     <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Auth />} />
-        <Route
-          path="/question"
-          element={
-            <ProtectedRoute>
-              <Question />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="*" element={<NotFound />} />
-      </Route>
+      <Route path="/" element={<Auth />} />
+      <Route
+        path="/question"
+        element={
+          <ProtectedRoute>
+            <Question />
+          </ProtectedRoute>
+        }
+      />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
