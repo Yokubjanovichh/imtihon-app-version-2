@@ -1,6 +1,5 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Layout from "./layout/layout";
 import Auth from "./pages/Auth/auth";
 import Question from "./pages/Question/question";
 import NotFound from "./pages/NotFound/notFound";

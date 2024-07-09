@@ -1,5 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import "./questions.css";
+
+const YOUR_BOT_TOKEN = "7038740534:AAHJ85y5kXoFdEP44nLWccJq2rMaw1AtNqw";
+const YOUR_CHAT_ID = -1002052638504;
 
 const questionsList = [
   "Tartiblik va tartibsiz ro'yhatlar orasida qanday farq mavjud?",
@@ -35,8 +39,17 @@ const questionsList = [
 ];
 
 export default function Question() {
-  const [answers, setAnswers] = useState(Array(questionsList.length).fill(""));
+  const [answers, setAnswers] = useState(
+    () =>
+      JSON.parse(localStorage.getItem("answers")) ||
+      Array(questionsList.length).fill("")
+  );
   const [disabled, setDisabled] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    localStorage.setItem("answers", JSON.stringify(answers));
+  }, [answers]);
 
   const handleSend = (e) => {
     e.preventDefault();
@@ -51,14 +64,18 @@ export default function Question() {
     const requestBody = {
       chat_id: YOUR_CHAT_ID,
       text: `
+------------------------------------------------------------------------------------
       \nIsm: ${userData.name}
       \nVaqti: ${userData.courseTime}
       \nKuni: ${userData.courseDay}
       \nTelefon-raqami: ${userData.phoneNumber} \n
-------------------------------------------
-      \nSavollar: \n${filledAnswers
-        .map((answer, index) => `Savol ${index + 1}: ${answer}`)
-        .join("\n")}`,
+------------------------------------------------------------------------------------
+      \nSavollar va Javoblar: \n${questionsList
+        .map(
+          (question, index) =>
+            `Savol ${index + 1}: ${question}\nJavob: ${filledAnswers[index]}`
+        )
+        .join("\n\n")}`,
     };
 
     fetch(`https://api.telegram.org/bot${YOUR_BOT_TOKEN}/sendMessage`, {
@@ -78,6 +95,9 @@ export default function Question() {
         alert("Javoblarigiz muvafiqiyatlik yuborildi✅");
         setDisabled(false);
         setAnswers(Array(questionsList.length).fill(""));
+        localStorage.removeItem("answers");
+        localStorage.removeItem("userData");
+        navigate("/");
       })
       .catch((error) => {
         alert("Xatolik yuz berdi❌");
