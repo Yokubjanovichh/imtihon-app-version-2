@@ -4,6 +4,7 @@ import "./questions.css";
 
 const YOUR_BOT_TOKEN = "7038740534:AAHJ85y5kXoFdEP44nLWccJq2rMaw1AtNqw";
 const YOUR_CHAT_ID = -1002052638504;
+const MAX_MESSAGE_LENGTH = 4096;
 
 const questionsList = [
   "Tartiblik va tartibsiz ro'yhatlar orasida qanday farq mavjud?",
@@ -51,6 +52,41 @@ export default function Question() {
     localStorage.setItem("answers", JSON.stringify(answers));
   }, [answers]);
 
+  const splitMessage = (message, maxLength) => {
+    const parts = [];
+    let remainingMessage = message;
+    while (remainingMessage.length > maxLength) {
+      const splitIndex = remainingMessage.lastIndexOf("\n", maxLength);
+      const index = splitIndex > 0 ? splitIndex : maxLength;
+      parts.push(remainingMessage.slice(0, index));
+      remainingMessage = remainingMessage.slice(index);
+    }
+    parts.push(remainingMessage);
+    return parts;
+  };
+
+  const sendMessage = async (parts) => {
+    for (const part of parts) {
+      const requestBody = {
+        chat_id: YOUR_CHAT_ID,
+        text: part,
+      };
+
+      await fetch(`https://api.telegram.org/bot${YOUR_BOT_TOKEN}/sendMessage`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      }).then((response) => {
+        if (!response.ok) {
+          throw new Error("Xatolik yuz berdi");
+        }
+        return response.json();
+      });
+    }
+  };
+
   const handleSend = (e) => {
     e.preventDefault();
     setDisabled(true);
@@ -61,37 +97,24 @@ export default function Question() {
       answer.trim() === "" ? "-" : answer
     );
 
-    const requestBody = {
-      chat_id: YOUR_CHAT_ID,
-      text: `
+    const message = `
 ------------------------------------------------------------------------------------
-      \nIsm: ${userData.name}
-      \nVaqti: ${userData.courseTime}
-      \nKuni: ${userData.courseDay}
-      \nTelefon-raqami: ${userData.phoneNumber} \n
+    \nIsm: ${userData.name}
+    \nVaqti: ${userData.courseTime}
+    \nKuni: ${userData.courseDay}
+    \nTelefon-raqami: ${userData.phoneNumber} \n
 ------------------------------------------------------------------------------------
-      \nSavollar va Javoblar: \n${questionsList
-        .map(
-          (question, index) =>
-            `Savol ${index + 1}: ${question}\nJavob: ${filledAnswers[index]}`
-        )
-        .join("\n\n")}`,
-    };
+    \nSavollar va Javoblar: \n${questionsList
+      .map(
+        (question, index) =>
+          `Savol ${index + 1}: ${question}\nJavob: ${filledAnswers[index]}`
+      )
+      .join("\n\n")}`;
 
-    fetch(`https://api.telegram.org/bot${YOUR_BOT_TOKEN}/sendMessage`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(requestBody),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Xatolik yuz berdi");
-        }
-        return response.json();
-      })
-      .then((data) => {
+    const messageParts = splitMessage(message, MAX_MESSAGE_LENGTH);
+
+    sendMessage(messageParts)
+      .then(() => {
         alert("Javoblarigiz muvafiqiyatlik yuborildi✅");
         setDisabled(false);
         setAnswers(Array(questionsList.length).fill(""));
