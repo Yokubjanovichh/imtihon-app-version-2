@@ -65,6 +65,7 @@
 .paxta > h1 {
   font-size: 32px;
   color: #dcc264;
+  text-align: center;
 }
 @media screen and (min-width: 600px) {
   .rigister label input,
