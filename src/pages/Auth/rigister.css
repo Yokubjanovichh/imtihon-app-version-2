@@ -49,6 +49,23 @@
   font-family: sans-serif;
 }
 
+.paxta {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 20px;
+}
+
+.paxta > img {
+  width: 100px;
+  height: 100px;
+}
+
+.paxta > h1 {
+  font-size: 32px;
+  color: #dcc264;
+}
 @media screen and (min-width: 600px) {
   .rigister label input,
   .rigister label select,

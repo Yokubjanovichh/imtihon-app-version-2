@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import algoritm_logo from "../../assets/algoritm.svg";
 import "./rigister.css";
 
 export default function Auth() {
@@ -23,6 +24,10 @@ export default function Auth() {
   return (
     <form>
       <div className="rigister">
+        <div className="paxta">
+          <img src={algoritm_logo} alt="logo" />
+          <h1>Algoritm edu exam app</h1>
+        </div>
         <h1>Ro'yxatdan o'tish</h1>
         <label>
           <p>Ism familiya:</p>
