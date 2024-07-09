@@ -1,1 +1,1 @@
-demo: imtihon-uchun-201450rje-yokubjanovichhs-projects.vercel.app
+demo: [clickToVisit](https://imtihon-app-version-2.vercel.app/)
