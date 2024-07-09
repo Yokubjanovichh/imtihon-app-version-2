@@ -49,7 +49,7 @@ export default function Auth() {
               Dushanba, Chorshanba, Juma
             </option>
             <option value="Seshanba, Payshanba, Shanba">
-              Sheshanba, Payshanba, Shanba
+              Seshanba, Payshanba, Shanba
             </option>
           </select>
         </label>
