@@ -141,7 +141,7 @@ export default function Question() {
               value={answers[index]}
               onChange={(e) => {
                 const newAnswers = [...answers];
-                newAnswers[index] = e.target.value;
+                newAnswers[index] = e.target.value
                 setAnswers(newAnswers);
               }}
             ></textarea>
