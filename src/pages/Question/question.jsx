@@ -2,41 +2,41 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./questions.css";
 
-const YOUR_BOT_TOKEN = "7038740534:AAHJ85y5kXoFdEP44nLWccJq2rMaw1AtNqw";
-const YOUR_CHAT_ID = -1002052638504;
+const YOUR_BOT_TOKEN = "7577646788:AAHrRTCGqLM4JU8stvqlFa5piSkRiFynKzk";
+const YOUR_CHAT_ID = -4592491979;
 const MAX_MESSAGE_LENGTH = 4096;
 
 const questionsList = [
-  "Tartiblik va tartibsiz ro'yhatlar orasida qanday farq mavjud?",
-  "HTML da element deb nimaga aytiladi?",
-  "Qanday input turlarini bilasiz...",
-  "HTML da qanday ro'yhat turlari bor?",
-  "Textarea va input taglari orasidagi farq nima?",
-  "HTML da qanday media taglari mavjud?",
-  "HTML formalar nima uchun ishlatiladi?",
-  "Audio va video taglar qanday ishlatiladi?",
-  "HTML jadvalda colspan va rowspan qanday vazifa uchun ishlatiladi?",
-  "HTMLning saytdagi vazifasi nimadan iborat?",
-  "HTML da link yaratish uchun qaysi tag ishlatiladi?",
-  "Anchor(Link) tag (a) va uning atributlari qanday ishlatiladi?",
-  "HTML attribute deb nimaga aytiladi?",
-  "<textarea> tagiga uzunlik va balandlik berish uchun qanday atributlar mavjud?",
-  "HTML da matnlarni bo'limlarga ajratishni qanday usullari bor?",
-  "label tagini vazifasi nimadan iborat?",
-  "label tagini input tagiga nechta usul bilan bog'lash mumkin",
-  "HTML da image qo'shish uchun qaysi tag ishlatiladi?",
-  "Img tagining atributlari va ulardan qanday foydalaniladi?",
-  "Media(audio, video) taglarida loop atributi nima vazifa bajaradi?",
-  "Block va inline elementlar orasidagi farq nima?",
-  "HTML tag deb nimaga ataladi?",
-  "HTML da table tagi va uning bolalari qanday ishlatiladi?",
-  "<button type='reset'> ning vazifasi nimadan iborat",
-  "<thead> va <tbody> taglarining vazifasi nimadan iborat",
-  "<form> tagini action atributini vazifasi nimadan iborat?",
-  "<!Doctype html> saytdagi vazifasi nimadan iborat?",
-  "HTML head va body taglari orasidagi farq nima?",
-  "Juft va toq taglarni qanday farqlari bor?",
-  "Media(audio, video) taglarida controls atributi nima vazifa bajaradi",
+  "CSS nima va nima uchun ishlatiladi?",
+  "CSS qanday HTML sahifaga qo‘shiladi?",
+  "class va id selectorlari o‘rtasidagi farq nima?",
+  "Inline, Internal, va External CSS nima? Ularning farqlari qanday?",
+  "CSS faylini HTML sahifasiga qanday ulash mumkin?",
+  "color xususiyati nima va qanday ishlatiladi?",
+  "Font o‘lchamini o‘zgartirish uchun qaysi xususiyatdan foydalaniladi?",
+  "Margin va Padding o‘rtasidagi farq nima?",
+  "CSSda 'box model' nima?",
+  "float xususiyati nima va qanday ishlatiladi?",
+  "Bir nechta elementlarga bitta class yoki id ni berish mumkinmi?",
+  "CSSda position xususiyatining turli qiymatlari nimani anglatadi?",
+  "z-index nima va qachon ishlatiladi?",
+  "Pseudo-sinfi nima va qanday ishlatiladi?",
+  "display: block va display: inline o‘rtasidagi farq nima?",
+  "Elementning hajmi va o‘rni qanday belgilanishi mumkin?",
+  "Background image qo‘shish uchun qaysi CSS qoidalari ishlatiladi?",
+  "Elementning chekka chiziqlarini (border) qanday o‘zgartirish mumkin?",
+  "hover pseudo-sinfi qanday ishlaydi?",
+  "CSS transition xususiyati nima va qanday qo‘llaniladi?",
+  "max-width va min-width xususiyatlari nima?",
+  "CSS Selectorlari qanday turlarga bo'linadi?",
+  "Flexbox modeli nima va qanday ishlaydi?",
+  "Elementlar orasidagi bo'shliqni qanday o'rnatish mumkin?",
+  "Shriftning stilini (bold, italic) qanday belgilash mumkin?",
+  "CSSda text-transform xususiyati nima va qanday ishlatiladi?",
+  "Elementning to‘liq ko‘rinmas bo‘lishi uchun qaysi xususiyat ishlatiladi?",
+  "Text-align xususiyati nima va qanday ishlatiladi?",
+  "Elementning kengligi va balandligini pikselda qanday belgilash mumkin?",
+  "Border-radius xususiyati nima va u qanday ishlatiladi?",
 ];
 
 export default function Question() {
@@ -141,7 +141,7 @@ export default function Question() {
               value={answers[index]}
               onChange={(e) => {
                 const newAnswers = [...answers];
-                newAnswers[index] = e.target.value
+                newAnswers[index] = e.target.value;
                 setAnswers(newAnswers);
               }}
             ></textarea>
