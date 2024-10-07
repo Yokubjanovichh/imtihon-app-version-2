@@ -3,23 +3,20 @@ import { useNavigate } from "react-router-dom";
 import "./questions.css";
 
 const YOUR_BOT_TOKEN = "7577646788:AAHrRTCGqLM4JU8stvqlFa5piSkRiFynKzk";
-const YOUR_CHAT_ID = -4592491979;
+const YOUR_CHAT_ID = -4514273857;
 const MAX_MESSAGE_LENGTH = 4096;
 
 const questionsList = [
   "CSS nima va nima uchun ishlatiladi?",
   "CSS qanday HTML sahifaga qo‘shiladi?",
   "class va id selectorlari o‘rtasidagi farq nima?",
-  "Inline, Internal, va External CSS nima? Ularning farqlari qanday?",
   "CSS faylini HTML sahifasiga qanday ulash mumkin?",
   "color xususiyati nima va qanday ishlatiladi?",
   "Font o‘lchamini o‘zgartirish uchun qaysi xususiyatdan foydalaniladi?",
   "Margin va Padding o‘rtasidagi farq nima?",
   "CSSda 'box model' nima?",
-  "float xususiyati nima va qanday ishlatiladi?",
   "Bir nechta elementlarga bitta class yoki id ni berish mumkinmi?",
   "CSSda position xususiyatining turli qiymatlari nimani anglatadi?",
-  "z-index nima va qachon ishlatiladi?",
   "Pseudo-sinfi nima va qanday ishlatiladi?",
   "display: block va display: inline o‘rtasidagi farq nima?",
   "Elementning hajmi va o‘rni qanday belgilanishi mumkin?",
@@ -28,7 +25,6 @@ const questionsList = [
   "hover pseudo-sinfi qanday ishlaydi?",
   "CSS transition xususiyati nima va qanday qo‘llaniladi?",
   "max-width va min-width xususiyatlari nima?",
-  "CSS Selectorlari qanday turlarga bo'linadi?",
   "Flexbox modeli nima va qanday ishlaydi?",
   "Elementlar orasidagi bo'shliqni qanday o'rnatish mumkin?",
   "Shriftning stilini (bold, italic) qanday belgilash mumkin?",
@@ -135,7 +131,6 @@ export default function Question() {
         <h1 className="question">Savollar:</h1>
         {questionsList.map((question, index) => (
           <label key={index}>
-            <h2>{index + 1}-Savol</h2>
             <p>{question}</p>
             <textarea
               value={answers[index]}
